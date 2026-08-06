@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from 'react-icons/io'
 import styled from 'styled-components';
 
@@ -7,23 +6,22 @@ type ratingInterface = {
     isFull: boolean,
 
 }
-// @ts-expect-error https://typescript-eslint.io/rules/ban-ts-comment
-const calculateRating: ratingInterface[] = (ratingNumber: number) => {
-    const ratingRange = 5;
-    const result: ratingInterface[] = [];
-    const roundedNumber = ratingRange % ratingNumber;
-    console.log(roundedNumber)
 
-    for (let i = 1; i <= ratingRange; i++) {
-        if ( ratingNumber == ratingNumber) {
-            result.push({
-                isFull: false,
-                isHave: true
-            })
-        } else if (roundedNumber < i) {
+const calculateRating = (ratingNumber: number) => {
+    const result: ratingInterface[] = [];
+    const rating = Math.floor(ratingNumber);
+    const isHalf = (ratingNumber - rating) >= 0.5;
+
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
             result.push({
                 isFull: true,
                 isHave: false
+            })
+        } else if (i <= rating + 1 && isHalf) {
+            result.push({
+                isFull: false,
+                isHave: true
             })
         } else {
             result.push({
@@ -37,13 +35,8 @@ const calculateRating: ratingInterface[] = (ratingNumber: number) => {
     return result;
 }
 export const Rating = ({ ratingNumber }: { ratingNumber: number }) => {
-    const [ratings, setRatings] = useState<ratingInterface[]>()
     // ratingNumber =  []  
-    const rates: ratingInterface[] = calculateRating(ratingNumber);
-
-    useEffect(() => {
-        setRatings(rates)
-    }, [rates])
+    const ratings = calculateRating(ratingNumber) as ratingInterface[];
 
     return (
 

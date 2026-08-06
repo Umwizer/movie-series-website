@@ -5,6 +5,8 @@ export const HomeContainer = styled.div<{ mode: "light" | "dark" }>`
   height: 100vh;
   width: 100%;
   color: ${(props) => (props.mode === "light" ? "black" : "#fff")};
+  overflow: hidden;
+  position: relative;
 `;
 
 type variants = "success" | "info" | "danger" | "outline";

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div<{ mode: "light" | "dark" }>`
-  background-color: ${(props) => (props.mode === "light" ? "white" : "black")};
-  height: 100vh;
+  background-color: ${(props) =>
+    props.mode === "light" ? "white" : "black"};
+
+  min-height: 100vh;
   width: 100%;
-  color: ${(props) => (props.mode === "light" ? "black" : "#fff")};
-  overflow: hidden;
+
+  color: ${(props) =>
+    props.mode === "light" ? "black" : "#fff"};
+
   position: relative;
 `;
 

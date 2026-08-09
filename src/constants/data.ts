@@ -1,6 +1,7 @@
 import witcherBanner from "../assets/images/banner/banner.png";
 import witcherLogo from "../assets/images/logos/witcher_logo.png";
 import poster_1 from "../assets/images/posters/image 202.png";
+import mission_poster from "../assets/images/posters/mission_poster.png";
 import missionBanner from "../assets/images/banner/mission-banner.png";
 import missionLogo from "../assets/images/logos/mission-logo.png";
 
@@ -28,7 +29,7 @@ export const heroData: HeroType = {
       title: "The Witcher",
       description:
         "Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts",
-      rating: 4,
+      rating: 3,
     },
     {
       banner: missionBanner,
@@ -44,7 +45,7 @@ export const heroData: HeroType = {
       title: "The Witcher",
       description:
         "Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts",
-      rating: 4,
+      rating: 3.5,
     },
   ],
   relatedTopMovie: [
@@ -56,7 +57,7 @@ export const heroData: HeroType = {
     },
     {
       id: 2,
-      image: poster_1,
+      image: mission_poster,
       url: "#",
       active: false,
     },

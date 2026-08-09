@@ -1,8 +1,7 @@
 import React from "react"
 import { HomeContainer } from "./styles/index"
-import { Hero } from "./components"
-import { Navbar } from "./components/navbar"
-
+import { Hero, Navbar } from "./components"
+import { Trends } from "./components/trends/trends"
 
 const App = () => {
 
@@ -10,6 +9,7 @@ const App = () => {
     <HomeContainer mode="dark">
       <Navbar />
       <Hero />
+      <Trends/>
     </HomeContainer>
   </React.Fragment>
 }

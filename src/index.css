@@ -1,4 +1,4 @@
-: root {
+:root {
   --text: #000000;
   --text-h: #08060d;
   --bg: #fff;
@@ -46,12 +46,19 @@
   }
 }
 
-#root {
-  max-width: 100%;
-  display: flex;
-  box-sizing: border-box;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-body {
-  margin: 0;
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }

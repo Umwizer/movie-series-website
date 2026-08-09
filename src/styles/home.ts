@@ -1,26 +1,28 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div<{ mode: "light" | "dark" }>`
-  background-color: ${(props) => (props.mode === "light" ? "white" : "black")};
-  height: 100vh;
+  background-color: ${(props) => (props.mode === "light" ? "#ffffff" : "#080b10")};
+  min-height: 100vh;
   width: 100%;
-  color: ${(props) => (props.mode === "light" ? "black" : "#fff")};
-  overflow: hidden;
+  color: ${(props) => (props.mode === "light" ? "#000000" : "#ffffff")};
+  overflow-x: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 type variants = "success" | "info" | "danger" | "outline";
 
 export const StyledButton = styled.button<{
-  varaints: variants;
+  $variant: variants;
   width?: string | number;
 }>`
   background: ${(props) =>
-    props.varaints === "success"
+    props.$variant === "success"
       ? "green"
-      : props.varaints == "danger"
+      : props.$variant === "danger"
         ? "red"
-        : props.varaints == "outline"
+        : props.$variant === "outline"
           ? "transparent"
           : "blue"};
   border-radius: 5px;
@@ -30,6 +32,6 @@ export const StyledButton = styled.button<{
   color: white;
   gap: 10px;
   border-color: ${(props) =>
-    props.varaints === "outline" ? "white" : "transparent"};
+    props.$variant === "outline" ? "white" : "transparent"};
   border-width: 2px;
 `;

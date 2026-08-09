@@ -70,8 +70,8 @@ const zoomResetAndIn = keyframes`
 
 const CardWrapper = styled.div`
     position: relative;
-    width: 220px;
-    height: 330px;
+    width: 190px;
+    height: 280px;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;

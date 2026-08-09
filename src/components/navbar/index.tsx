@@ -1,114 +1,120 @@
-import styled from "styled-components"
-import logo from '../../assets/images/logos/logo.png'
-import { useNavigate } from "react-router"
-import { IoIosNotifications, IoMdPerson } from "react-icons/io"
+import { useState } from "react";
+import styled from "styled-components";
+import logo from '../../assets/images/logos/logo.png';
+import { useNavigate, useLocation } from "react-router-dom";
+import { IoIosNotifications, IoMdPerson } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { IoSunnyOutline } from "react-icons/io5";
-import { useState } from "react";
-
 
 export const Navbar = () => {
     const [unread, setUnread] = useState<number>(1);
-    const [activeNav, setActiveNav] = useState<string>("Home")
-    const route = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const navItem: { label: string; url: string }[] = [
         {
             label: "Home",
-            url: "#"
-
+            url: "/"
         },
         {
             label: "Pricing",
-            url: "#pricing"
-
+            url: "/pricing"
         },
         {
             label: "Movies",
-            url: "#movies"
-
+            url: "/movies"
         },
         {
             label: "Series",
-            url: "#series"
-
+            url: "/series"
         },
         {
             label: "Collections",
-            url: "#collections"
-
+            url: "/collections"
         },
         {
             label: "FAQ",
-            url: "#faq"
-
+            url: "/faq"
         }
-    ]
-    return <NavBarContainer>
-        <div className="container">
-            <div className="content">
-                <img src={logo.toString()} alt="logo" />
-                <ul>
-                    {navItem.map((nav, index) => {
-                        const isActive = activeNav === nav.label;
+    ];
 
-                        return (
-                            <li
-                                key={index}
-                                className={isActive ? "active" : ""}
-                                onClick={() => {
-                                    setActiveNav(nav.label);
-                                    route(nav.url);
-                                }}
-                            >
-                                {nav.label}
-                            </li>
-                        );
-                    })}
-                </ul>
-            </div>
-            <div className="icons-container">
-                <CiSearch />
-                <div className="icon-wrapper" onClick={() => setUnread(0)}>
-                    <IoIosNotifications />
-                    {unread > 0 && <span className="badge-dot" />}
+    const handleNavClick = (nav: { label: string; url: string }) => {
+        navigate(nav.url);
+    };
+
+    return (
+        <NavBarContainer>
+            <div className="container">
+                <div className="content">
+                    <img 
+                        src={logo.toString()} 
+                        alt="logo" 
+                        onClick={() => {
+                            navigate('/');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }} 
+                        style={{ cursor: 'pointer' }}
+                    />
+                    <ul>
+                        {navItem.map((nav, index) => {
+                            const isActive = location.pathname === nav.url || (nav.url === '/' && (location.pathname === '' || location.pathname === '/'));
+
+                            return (
+                                <li
+                                    key={index}
+                                    className={isActive ? "active" : ""}
+                                    onClick={() => handleNavClick(nav)}
+                                >
+                                    {nav.label}
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </div>
-                <IoMdPerson />
-                <IoSunnyOutline />
+                <div className="icons-container">
+                    <CiSearch />
+                    <div className="icon-wrapper" onClick={() => setUnread(0)}>
+                        <IoIosNotifications />
+                        {unread > 0 && <span className="badge-dot" />}
+                    </div>
+                    <IoMdPerson />
+                    <IoSunnyOutline />
+                </div>
             </div>
-        </div>
-    </NavBarContainer>
-}
+        </NavBarContainer>
+    );
+};
+
 const NavBarContainer = styled.div`
-      position: absolute;
-      width: 90%;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%); /* Centers the fixed navbar on screen */
-      z-index: 2;
+    position: absolute;
+    width: 90%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     
-      .container {
+    .container {
         display: flex;
         align-items: center;
-        justify-content: space-between; /* Pushes content to left & icons to right */
+        justify-content: space-between;
         backdrop-filter: blur(10px);
         border: 1px solid #006486;
         border-radius: 10px;
-        padding: 10px 20px; /* Spacing inside the navbar container */
-      }
+        padding: 10px 20px;
+    }
     
-      .content {
+    .content {
         display: flex;
-        align-items: center; /* Vertically centers logo and text links */
+        align-items: center;
         gap: 30px;
     
         img {
-          width: 60px;
-          object-fit: contain;
+            width: 60px;
+            object-fit: contain;
         }
-      }
+    }
     
-      ul {
+    ul {
         list-style: none;
         display: flex;
         align-items: center;
@@ -118,33 +124,33 @@ const NavBarContainer = styled.div`
         padding: 0;
     
         li {
-          cursor: pointer;
-          padding-bottom: 4px;
+            cursor: pointer;
+            padding-bottom: 4px;
 
-          &.active {
-            border-bottom: 4px solid #006486;
-            border-radius: 4px;
-          }
+            &.active {
+                border-bottom: 4px solid #006486;
+                border-radius: 4px;
+            }
         }
-      }
+    }
     
-      .icon-wrapper{
+    .icon-wrapper {
         position: relative;
         display: inline-flex;
-      }
+    }
     
-      .icons-container {
-        display: flex; /* Uncommented so icons use flexbox */
-        align-items: center; /* Vertically aligns icons */
+    .icons-container {
+        display: flex;
+        align-items: center;
         gap: 15px;
-        font-size: 1.5em; /* Optional: gives icons uniform size */
+        font-size: 1.5em;
     
         svg {
-          cursor: pointer;
+            cursor: pointer;
         }
         
         .badge-dot {
-            background-color:  #ff3b30;
+            background-color: #ff3b30;
             border-radius: 50%;
             width: 8px;
             height: 8px;
@@ -152,5 +158,5 @@ const NavBarContainer = styled.div`
             right: 0px;
             position: absolute;
         }
-      }
-    `;
+    }
+`;

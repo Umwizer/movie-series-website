@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from "react"
-import { HomeContainer } from "./styles/index"
-import { Button } from "./components/button"
-import { useNavigate } from "react-router"
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { HomeContainer } from "./styles/index";
+import { Hero, Navbar, Series, Trends, Movies, Collections, Pricing, FAQ, GoldenGlobe } from "./components";
 
 const App = () => {
-  const navigation = useNavigate()
-  const [isClick, setClick] = useState<boolean>(false)
+  const location = useLocation();
+
   useEffect(() => {
-    console.log(isClick)
-  }, [
-    isClick
-  ])
-  return <React.Fragment>
+    const sectionName = location.pathname.replace("/", "");
+    if (sectionName) {
+      const element = document.getElementById(sectionName);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.pathname]);
+
+  return (
     <HomeContainer mode="dark">
-      <form>
-        <Button label="Save" type="button" variants="danger" action={() => navigation("/about")} />
-      </form>
-      <Button label="cancel" action={() => { setClick(true) }} variants="outline" />
+      <Navbar />
+      <Hero />
+      <Trends />
+      <Movies />
+      <GoldenGlobe/>
+      <Series />
+      <Pricing />
+      <Collections />
+      <FAQ />
     </HomeContainer>
-  </React.Fragment>
-}
-export default App
+  );
+};
+
+export default App;

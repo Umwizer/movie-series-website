@@ -5,6 +5,7 @@ import { Hero, Navbar, Series, Trends, Movies, Collections, Pricing, FAQ, Golden
 
 const App = () => {
   const location = useLocation();
+  
 
   useEffect(() => {
     const sectionName = location.pathname.replace("/", "");
@@ -36,3 +37,4 @@ const App = () => {
 };
 
 export default App;
+//  this => envirnment variables 

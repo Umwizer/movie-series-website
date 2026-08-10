@@ -10,6 +10,7 @@ export interface SectionHeaderProps {
     withBorder?: boolean;
     labelColor?: string;
     onSeeMore?: () => void;
+    children?: React.ReactNode
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -19,6 +20,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     withBorder = false,
     labelColor = "#006486",
     onSeeMore,
+    children
 }) => {
     const variant: ButtonVariant = withOutline ? "outline" : "primary";
 
@@ -34,6 +36,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
                 rightIcon={<FaArrowRight size={16} />}
                 onClick={onSeeMore}
             />
+            {children}
         </HeaderContainer>
     );
 };

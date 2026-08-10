@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 import { Ratings } from './Ratings';
 import defaultPoster from '../../assets/images/posters/image 202.png';
+import { Images } from './Image';
 
 export interface CardProps {
     title?: string;
@@ -31,10 +32,12 @@ export const Card: React.FC<CardProps> = ({
 
     return (
         <CardWrapper onClick={onClick}>
-            <CardBackground $image={image} className="card-bg" />
-            
+            <CardBackground className="card-bg" >
+                <img src={image} alt={image} />
+            </CardBackground>
+
             <BlackCornerFrame>
-                <AddButton 
+                <AddButton
                     $isAdded={isAdded}
                     onClick={handleAddClick}
                     title={isAdded ? "Remove from Watchlist" : "Add to Watchlist"}
@@ -95,14 +98,20 @@ const CardWrapper = styled.div`
     }
 `;
 
-const CardBackground = styled.div<{ $image: string }>`
+const CardBackground = styled.div`
     width: 100%;
     height: 100%;
-    background-image: url(${props => props.$image});
     background-size: cover;
     background-position: center;
     transform: scale(1.25);
     transition: transform 0.5s ease;
+    position:relative;
+
+    img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+    }
 `;
 
 const BlackCornerFrame = styled.div`

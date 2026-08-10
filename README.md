@@ -78,5 +78,5 @@ export default defineConfig([
 ```
 styling options = styled components, tailwind , normall styling, framework css=> components, 
 
-
+fetching  1. fetching, statement => redux with toolkit
 ```

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import pricing_b from "../../assets/images/pricing/pricing-b.png";
 import pricing_sug from "../../assets/images/pricing/pricing-sug.png";
 import { Button } from '../ui/button';
-import { FaShoppingBag } from 'react-icons/fa';
+import { HiShoppingBag } from "react-icons/hi2";
 
 export const Pricing = () => {
     return (
@@ -37,7 +37,7 @@ export const Pricing = () => {
                                 variant="info"
                                 activeColor="#228ee5"
                                 onClick={() => console.log("Selected Basic")}
-                                leftIcon={<FaShoppingBag size={18} />}
+                                leftIcon={<HiShoppingBag size={18} />}
                             />
                         </ButtonWrapper>
                     </CardContent>
@@ -72,13 +72,12 @@ export const Pricing = () => {
                                 variant={'info'}
                                 activeColor="#ffffff"
                                 onClick={() => console.log("Selected Suggested")}
-                                leftIcon={<FaShoppingBag size={18} />}
+                                leftIcon={<HiShoppingBag size={18} />}
                             />
                         </ButtonWrapper>
                     </CardContent>
                 </PricingCard>
 
-                {/* ---------- PREMIUM ---------- */}
                 <PricingCard>
                     <CardImage src={pricing_b} alt=""  $suggested={false}/>
                     <CardContent>
@@ -106,7 +105,7 @@ export const Pricing = () => {
                                 variant="info"
                                 activeColor="#228ee5"
                                 onClick={() => console.log("Selected Premium")}
-                                leftIcon={<FaShoppingBag size={18} />}
+                                leftIcon={<HiShoppingBag size={18} />}
                             />
                         </ButtonWrapper>
                     </CardContent>
@@ -144,7 +143,6 @@ const PricingCard = styled.div`
     height: auto;
     border-radius: 24px;
     cursor: pointer;
-    // box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease;
 
     &:hover {
@@ -186,7 +184,7 @@ const HeaderBlock = styled.div<{ $suggested?: boolean }>`
 const CategoryTitle = styled.h2<{ $color: string}>`
     color: ${props => props.$color};
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 500;
     margin: 0;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -195,7 +193,7 @@ const CategoryTitle = styled.h2<{ $color: string}>`
 const DurationText = styled.div<{ $color: string }>`
     color: ${props => props.$color};
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 300;
     letter-spacing: 0.3px;
     padding-top: 16px;
 `;
@@ -233,16 +231,17 @@ const CostContainer = styled.div`
 const CostText = styled.div<{ $color: string }>`
     color: ${props => props.$color};
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 500;
     line-height: 1.1;
     white-space: nowrap;
 `;
 
 const OriginalCost = styled.div<{ $color: string }>`
     color: ${props => props.$color};
-    font-size: 1.15rem;
+    padding-bottom: 20px;
+    font-size: 2.5rem;
     text-decoration: line-through;
-    font-weight: 700;
+    font-weight: 500;
     opacity: 0.75;
     white-space: nowrap;
 `;
@@ -250,7 +249,7 @@ const OriginalCost = styled.div<{ $color: string }>`
 const FeatureNote = styled.div<{ $color: string }>`
     color: ${props => props.$color};
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 300;
     margin-top: 4px;
     list-style-position: inside;
 `;

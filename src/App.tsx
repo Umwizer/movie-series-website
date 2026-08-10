@@ -10,7 +10,7 @@ const App = () => {
     <HomeContainer mode="dark">
       <Navbar />
       <Hero />
-      <Footer />
+      {/* <Footer /> */}
     </HomeContainer>
   </React.Fragment>
 }

@@ -31,6 +31,7 @@ export const Trends = () => {
             setIsLoadingTrends(false)
         }
     }
+    
     useEffect(() => {
         getTrendingMovies();
     }, [timeWindow])
@@ -86,7 +87,8 @@ export const Trends = () => {
                                 title={movie.title}
                                 category={movie.media_type}
                                 rating={movie.vote_average / 2}
-                                image={`${imageUrl}original/${movie.poster_path}`}
+                                
+                                image={`${imageUrl}${movie.poster_path}`}
                             />
                         ))}
             </CardsContainer>

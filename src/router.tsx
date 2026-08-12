@@ -1,5 +1,6 @@
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+import { About } from "./About";
 
 const router = createHashRouter([
   {
@@ -28,8 +29,9 @@ const router = createHashRouter([
   },
   {
     path: "/faq",
-    element: <App />,
+    element: <About />,
   },
+  
 ]);
 
 export const AppRouter = () => {

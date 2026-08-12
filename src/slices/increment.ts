@@ -26,3 +26,5 @@ export const countSlice = createSlice({
     },
   },
 });
+export const { increment, decrement, incrementByPayload } = countSlice.actions;
+export default countSlice.reducer;

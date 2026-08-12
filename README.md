@@ -80,3 +80,16 @@ styling options = styled components, tailwind , normall styling, framework css=>
 
 fetching  1. fetching, statement => redux with toolkit
 ```
+
+12th /Aug
+1. react redux ,redux/toolkit
+ - store 
+ - provider
+ - states (useState,etc)
+ - function thunk functions
+ - persistance =>storage
+ - persistance provider
+2. context Api
+ - provider
+ - contex file 
+3. Zustand package ->useQuery

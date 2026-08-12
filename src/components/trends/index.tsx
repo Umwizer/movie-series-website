@@ -5,14 +5,14 @@ import { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Card } from "../ui/card";
 import { SectionHeader } from "../ui/SectionHeader";
-import type { TrandingMovies } from '../../types';
+import { TrandingMovies } from '../../types';
 import { apiUrl, imageUrl, tmdbApiKey } from '../../utils';
 
 export const Trends = () => {
     const [isLoadingTrends, setIsLoadingTrends] = useState(false);
-    const [trends, setTrends] = useState<TrandingMovies | null>();
-    const [timeWindow, setTimeWindow] = useState<"day" | "week">("day")
-    const [error, SetError] = useState<any>();
+    const [trends, setTrends] = useState<TrandingMovies | null>(null);
+    const [timeWindow, setTimeWindow] = useState<"day" | "week">("day");
+    const [error, SetError] = useState<unknown>(null);
 
     // redux toolkit
 
@@ -22,12 +22,12 @@ export const Trends = () => {
             setIsLoadingTrends(true)
 
             const fetchTrendings = await fetch(`${apiUrl}trending/movie/${timeWindow}?api_key=${tmdbApiKey}`);
-            const result = await fetchTrendings.json() as TrandingMovies
+            const result = await fetchTrendings.json();
             setTrends(result)
             setIsLoadingTrends(false)
         }
         catch (erro) {
-            SetError(erro as any)
+            SetError(erro)
             setIsLoadingTrends(false)
         }
     }
@@ -43,7 +43,7 @@ export const Trends = () => {
         const el = scrollContainerRef.current;
         if (!el) return;
 
-        const handleWheel = (e: WheelEvent) => {
+        const handleWheel = (e) => {
             if (e.deltaY === 0) return;
 
             const canScrollLeft = e.deltaY < 0 && el.scrollLeft > 0;
@@ -68,7 +68,8 @@ export const Trends = () => {
                 onSeeMore={() => console.log('See More clicked')}
             >
                 <select onChange={(data) => {
-                    setTimeWindow(data.target.value as "day" | "week")
+                    const val = data.target.value;
+                    setTimeWindow(val === 'week' ? 'week' : 'day')
                 }}>
                     <option value="day">Day</option>
                     <option value="week">Week</option>
